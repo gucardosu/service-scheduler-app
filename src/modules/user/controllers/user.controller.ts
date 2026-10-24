@@ -16,10 +16,10 @@ export class UserController {
         .json({ errors: z.flattenError(result.error).fieldErrors });
     }
 
-    const { name, email, password } = result.data;
+    const { name, email, password, role } = result.data;
 
     try {
-      const user = await this.service.createUser(name, email, password);
+      const user = await this.service.createUser(name, email, password, role);
       return res.status(201).json(user);
     } catch (error) {
       if (error instanceof EmailAlreadyExistsError) {

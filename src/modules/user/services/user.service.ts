@@ -4,10 +4,15 @@ import { EmailAlreadyExistsError } from "../errors/email-already-exists.error.js
 
 export class UserService {
   constructor(private repository: UserRepository) {}
-  async createUser(name: string, email: string, password: string) {
+  async createUser(
+    name: string,
+    email: string,
+    password: string,
+    role: "provider" | "client",
+  ) {
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
-      const user = await this.repository.create(name, email, hashedPassword);
+      const user = await this.repository.create(name, email, hashedPassword, role);
       return user;
     } catch (error) {
       if (
