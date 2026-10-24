@@ -1,0 +1,1 @@
+export const USERS_EMAIL_UNIQUE_CONSTRAINT = "users_email_unique";

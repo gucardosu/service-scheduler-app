@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { UserRepository } from "../repository/user.repository.js";
 import { EmailAlreadyExistsError } from "../errors/email-already-exists.error.js";
+import { USERS_EMAIL_UNIQUE_CONSTRAINT } from "../constants/user-constraints.js";
 
 export class UserService {
   constructor(private repository: UserRepository) {}
@@ -21,7 +22,7 @@ export class UserService {
         "code" in error &&
         "constraint" in error
       ) {
-        if (error.code === "23505" && error.constraint === "users_email_unique") {
+        if (error.code === "23505" && error.constraint === USERS_EMAIL_UNIQUE_CONSTRAINT) {
           throw new EmailAlreadyExistsError();
         }
       }
