@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 const defaults = {
   client: 'postgresql',
@@ -8,6 +8,7 @@ const defaults = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT),
   },
   pool: {
     min: 2,
@@ -15,7 +16,7 @@ const defaults = {
   },
   migrations: {
     tableName: 'knex_migrations',
-    directory: './database/migrations'
+    directory: './src/database/migrations'
   }
 };
 

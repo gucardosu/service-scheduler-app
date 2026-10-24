@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
-    "knex": "knex --knexfile src/knexfile.ts",
-    "migrate": "knex --knexfile src/knexfile.ts migrate:latest",
-    "migrate:rollback": "knex --knexfile src/knexfile.ts migrate:rollback",
-    "migrate:make": "knex --knexfile src/knexfile.ts migrate:make"
+    "knex": "knex --knexfile knexfile.ts",
+    "migrate": "knex --knexfile knexfile.ts migrate:latest",
+    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
+    "migrate:make": "knex --knexfile knexfile.ts migrate:make"
   },
   "keywords": [],
   "author": "",
